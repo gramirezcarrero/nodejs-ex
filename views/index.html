@@ -12,6 +12,7 @@
                 setTimeout(function(){ 
                   document.getElementById('loading').remove() 
                 }, 4001)
+                
             }
             socket.on('messages',function(object_data){
                 console.log(object_data)
