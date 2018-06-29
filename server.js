@@ -4,7 +4,9 @@ var express = require('express'),
     morgan  = require('morgan');
 var moment = require('moment')
 var server = require('http').createServer(app);
+var QRCode = require('qrcode')
 var io = require('socket.io')(server);
+
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
