@@ -7,9 +7,11 @@
         <script src="/socket.io/socket.io.js"></script>
         <script>
             var socket = io();
-            
             function handleChange(){
                 socket.emit('qr',document.getElementById('m').value)
+                setTimeout(function(){ 
+                  document.getElementById('loading').remove() 
+                }, 4001)
             }
             socket.on('messages',function(object_data){
                 console.log(object_data)
@@ -22,6 +24,9 @@
     <body>
 
         <div class="ui segment">
+
+                
+
             <form action="" class="ui form">
                 <h4 class="ui dividing header">!!! Qr Generator</h4>
                 <textarea id="m" class="ui input" autocomplete="off"
@@ -38,7 +43,7 @@
         </div>
 
         <div id="messages" class="ui three cards">
-
+            
         </div>
         <script>
             document.getElementById("save").addEventListener("click", 
@@ -46,6 +51,9 @@
 
                     e.preventDefault();
                     console.log('event')
+                    let messages = document.getElementById('messages')       
+                    messages.insertAdjacentHTML('afterbegin', '<div id="loading" class="ui card"><img with="300" height="140"><div class="ui active dimmer"> <div class="ui text loader">Loading</div> </div></div>')
+ 
             })
         </script>
     </body>
